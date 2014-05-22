@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Randolph County Recent Arrests feature.
+ */
+
+include_once 'rc_recent_arrests.features.inc';
