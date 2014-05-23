@@ -24,11 +24,12 @@ class RecentArrestsFilesMigration extends DrupalFile6Migration {
     if (!isset($fids)) {
       $fids = array_map(
         function($row) {
-          return $row->field_recent_arrest_photo_fid;
+          return strtotime($row->field_date_arrested_value) > strtotime('-13 months') ?
+          $row->field_recent_arrest_photo_fid : FALSE;
         },
         Database::getConnection('default', 'legacy')
           ->select('content_type_recent_arrests', 'ra_old')
-          ->fields('ra_old', array('field_recent_arrest_photo_fid'))
+          ->fields('ra_old', array('field_recent_arrest_photo_fid', 'field_date_arrested_value'))
           ->execute()
           ->fetchAll()
         );
