@@ -26,6 +26,9 @@ function rc_recent_arrests_migrate_api() {
         'source_type' => 'recent_arrests',
         'destination_type' => 'recent_arrests',
         'default_uid' => 1,
+        'dependencies' => array(
+          'RecentArrestsFiles',
+        ),
       ),
       'RecentArrestsFiles' => array(
         'class_name' => 'RecentArrestsFilesMigration',
